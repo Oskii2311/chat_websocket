@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Chat from '../Chat/Chat';
+import Chat from '../../Containers/Chat/Chat';
 
 function App() {
   return (

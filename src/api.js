@@ -6,14 +6,17 @@ function sendMessage(msg) {
   socket.emit('new message', msg);
 }
 
-function getMessage() {
+function getMessage(callback) {
   socket.on('new message', (msg) => {
-    const message = document.getElementById('msg');
-    const li = document.createElement('li');
-
-    li.innerText = msg;
-    message.append(li);
+    if (!msg) {
+      return false;
+    }
+    callback(msg);
   });
 }
 
-export { sendMessage, getMessage };
+function removeEventListener(eventName, listener) {
+  socket.removeListener(eventName, listener);
+}
+
+export { sendMessage, getMessage, removeEventListener };
